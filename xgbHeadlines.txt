@@ -1,0 +1,15 @@
+xgb_headline = XGBClassifier()
+
+xgb_headline.fit(X_headline_tfidf_train, y_headline_train)
+y_xgb_headline_pred = xgb_headline.predict(X_headline_tfidf_test)
+
+# print metrics
+print ("XGBoost F1 and Accuracy Scores : \n")
+print ( "F1 score {:.4}%".format( f1_score(y_headline_test, y_xgb_headline_pred, average='macro')*100 ) )
+print ( "Accuracy score {:.4}%".format(accuracy_score(y_headline_test, y_xgb_headline_pred)*100) )
+
+xtrain,xtest,ytrain,ytest = train_test_split(X_headline_tfidf,y)
+
+cv = cross_validation(xgb_headline, xtrain, ytrain , n_splits=5,init_chunk_size = 5000, chunk_spacings = 1000, average = "binary")
+cv.validate_for_holdout_set(xtest, ytest)
+cv.plot_learning_curve()

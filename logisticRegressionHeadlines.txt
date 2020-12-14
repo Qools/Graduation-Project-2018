@@ -1,0 +1,22 @@
+lr_headline = LogisticRegression(penalty='l1')
+
+# train model
+lr_headline.fit(X_headline_tfidf_train, y_headline_train)
+
+# get predictions for article section
+y_headline_pred = lr_headline.predict(X_headline_tfidf_test)
+
+# print metrics
+print ("Logistig Regression F1 and Accuracy Scores : \n")
+print ( "F1 score {:.4}%".format( f1_score(y_headline_test, y_headline_pred, average='macro')*100 ) )
+print ( "Accuracy score {:.4}%".format(accuracy_score(y_headline_test, y_headline_pred)*100) )
+
+cros_val_list = cross_val_score(lr_headline, X_headline_tfidf,y,cv=7)
+print (cros_val_list)
+print (cros_val_list.mean())
+
+xtrain,xtest,ytrain,ytest = train_test_split(X_headline_tfidf,y)
+
+cv = cross_validation(lr_headline, xtrain, ytrain , n_splits=5,init_chunk_size = 5000, chunk_spacings = 1000, average = "binary")
+cv.validate_for_holdout_set(xtest, ytest)
+cv.plot_learning_curve()

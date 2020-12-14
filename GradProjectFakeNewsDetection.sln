@@ -1,0 +1,23 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27428.2037
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{888888A0-9F3D-457C-B088-3A5042F75D52}") = "GradProjectFakeNewsDetection", "GradProjectFakeNewsDetection\GradProjectFakeNewsDetection.pyproj", "{18F4D9F9-8186-41E4-B40A-1E25CEBDAB6C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{18F4D9F9-8186-41E4-B40A-1E25CEBDAB6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{18F4D9F9-8186-41E4-B40A-1E25CEBDAB6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {38657CB7-C27B-4E31-973A-3C2FE3D03320}
+	EndGlobalSection
+EndGlobal

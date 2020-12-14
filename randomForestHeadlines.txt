@@ -1,0 +1,19 @@
+rcf_headline = RandomForestClassifier(n_estimators=100,n_jobs=3)
+
+rcf_headline.fit(X_headline_tfidf_train, y_headline_train)
+y_rc_headline_pred = rcf_headline.predict(X_headline_tfidf_test)
+
+# print metrics
+print ("Random Forest F1 and Accuracy Scores : \n")
+print ( "F1 score {:.4}%".format( f1_score(y_headline_test, y_rc_headline_pred, average='macro')*100 ) )
+print ( "Accuracy score {:.4}%".format(accuracy_score(y_headline_test, y_rc_headline_pred)*100) )
+
+cros_val_list = cross_val_score(rcf_headline, X_headline_tfidf,y,cv=5)
+print (cros_val_list)
+print (cros_val_list.mean())
+
+xtrain,xtest,ytrain,ytest = train_test_split(X_headline_tfidf,y)
+
+cv = cross_validation(rcf_headline, xtrain, ytrain , n_splits=5,init_chunk_size = 5000, chunk_spacings = 1000, average = "binary")
+cv.validate_for_holdout_set(xtest, ytest)
+cv.plot_learning_curve()
